@@ -1,0 +1,83 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator erd {
+  provider = "prisma-erd-generator"
+  theme    = "prisma-theme"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+//tabela BOLÃO
+model Pool {
+  id        String   @id @default(cuid())
+  title     String
+  code      String   @unique
+  createdAt DateTime @default(now())
+  ownerId   String?
+
+  //relacionamentos
+  owner        User?         @relation(fields: [ownerId], references: [id])
+  participants Participant[]
+}
+
+model Participant {
+  id     String  @id @default(cuid())
+  userId String?
+  poolId String
+
+  //relações
+  guesses Guess[]
+  user    User?   @relation(fields: [userId], references: [id])
+  pool    Pool    @relation(fields: [poolId], references: [id])
+
+  @@unique([userId, poolId]) // mostrar que um usuario so pode estar associado ao mesmo bolao uma vez
+}
+
+//TABELA USUARIOS
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  googleId  String?   @unique
+  avatarUrl String? // ? serve para indicar que o campo pode estar null
+  createdAt DateTime @default(now())
+
+  //relacionamentos
+  participatingAt Participant[]
+  ownPools        Pool[]
+}
+
+//
+model Game {
+  id                    String   @id @default(cuid())
+  date                  DateTime
+  firstTeamCountryCode  String
+  secondTeamCountryCode String
+
+  //relacionamentos
+  guesses Guess[] //relacionamento, não cria coluna
+}
+
+//tabela palpites
+model Guess {
+  id               String   @id @default(cuid())
+  firstTeamPoints  Int
+  secondTeamPoints Int
+  createdAt        DateTime @default(now())
+  gameId           String
+  participantId    String
+
+  //relacionamentos
+  game        Game        @relation(fields: [gameId], references: [id]) //@relation não é uma coluna, serve pro prisma identificar a relação entre tabelas
+  participant Participant @relation(fields: [participantId], references: [id])
+
+  @@unique([participantId, gameId])
+}
