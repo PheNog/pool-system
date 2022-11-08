@@ -8,7 +8,7 @@
 <p align="center">
  <a href="#sobre-o-projeto">Sobre o projeto</a> |
  <a href="#layout">Layout</a> | 
- <a href="#como-usar">Como usar</a>
+ <a href="#como-usar">Como usar</a> | 
   <a href="#endpoints">Endpoints</a> 
 </p>
 
