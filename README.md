@@ -20,7 +20,7 @@
 
   Aplicação construída durante o evento NLW Copa disponibilizado pela Rocketseat na trilha Ignite. Aplicação foi dividida em 3 pastas, interface Web para cadastro de bolões(ainda farei uma versao do app completo para web), a pasta mobile com o app para criar, visualizar e compartilhar bolões e por fim a aplicação backend usada para fornecer as rotas, dados e serviços para o funcionamento das outras duas.
 
-#### Feature
+#### Features
 
 - [X] Cadastro e login de usuário
 - [X] Cadastro de bolões
@@ -29,7 +29,7 @@
 - [X] Listagem de jogos
 - [X] Cadastro de palpites para um jogo em um bolão
 
-#### Tecnologias🚀
+#### Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
