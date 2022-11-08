@@ -17,20 +17,17 @@ export const poolRoutes = async (fastify: FastifyInstance) => {
         const createPoolBody = z.object({ //faz a validação do schema no body da requisição para evitar registros nulos por exemplo
             title: z.string(),
         })
-
         const { title } = createPoolBody.parse(request.body) // pega o title do body da requisição para evitar registros nulos por exemplo
         const generateCode = new ShortUniqueId({ length: 6 })
         const code = String(generateCode()).toUpperCase()
 
         try {
             await request.jwtVerify()
-
             await prisma.pool.create({
                 data: {
                     title,
                     code: code,
                     ownerId: request.user.sub,
-
                     participants: {
                         create: {
                             userId: request.user.sub,
@@ -38,7 +35,6 @@ export const poolRoutes = async (fastify: FastifyInstance) => {
                     }
                 }
             })
-
         } catch {
             await prisma.pool.create({
                 data: {
@@ -47,9 +43,6 @@ export const poolRoutes = async (fastify: FastifyInstance) => {
                 }
             })
         }
-
-
-
         return response.status(201).send({ code })
     })
 
@@ -94,20 +87,17 @@ export const poolRoutes = async (fastify: FastifyInstance) => {
                         id: pool.id
                     },
                     data: {
-                        ownerId: reqs.user.sub
+                        ownerId: req.user.sub
                     }
                 })
             }
-
             await prisma.participant.create({
                 data: {
                     poolId: pool.id,
                     userId: req.user.sub,
                 }
             })
-
             return res.status(200).send()
-
     })
 
     fastify.get('/pools', {
