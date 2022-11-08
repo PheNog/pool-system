@@ -38,6 +38,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [x] [Prisma](https://www.prisma.io/) - Usado para a construção dos esquemas e migrações do banco de dados;
 - [x] [Fastify](https://www.fastify.io/) - Usado para criar o servidor disponibilizando o recursos necessário para construir os endpoints da aplicação;
 - [x] [Reactjs](https://reactjs.org/)
+- [x] [React Native](https://reactnative.dev/) - construção do frontend Mobile
 
 ##### Padronização de código:
 
@@ -82,7 +83,8 @@ npm run dev
 npx expo start
 ```
 **OBS:**  Necessario baixar o expo go no seu celular para visualizar a aplicação mobile, aparecerá um QR CODE pra você no terminal da aplicação mobile
----
+
+
 ### EndPoints
 
 #### Cadastro e login de usuário
