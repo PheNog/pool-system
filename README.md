@@ -1,5 +1,5 @@
 
-<h1 align="center">NLW Copa - Web</h1>
+<h1 align="center">NLW Copa - Pool system</h1>
 
 ![NLW Copa](https://user-images.githubusercontent.com/40326598/200138387-f97fb545-6de7-47aa-9d8f-a71f11ecb6a1.png)
 ---
@@ -85,6 +85,8 @@ npx expo start
 ```
 **OBS:**  Necessario baixar o expo go no seu celular para visualizar a aplicação mobile, aparecerá um QR CODE pra você no terminal da aplicação mobile
 
+___
+
 
 ### EndPoints
 
@@ -104,16 +106,19 @@ ___
 Endpoint que retorna o numero de bolões ja criados.
 
 Método **GET** /pools/count
+___
 
 #### Contagem de palpites
 Endpoint que retorna o numero de palpites ja criados.
 
 Método **GET** /guesses/count
+___
 
 #### Contagem de usuarios
 Endpoint que retorna o numero de users ja criados.
 
 Método **GET** /users/count
+___
 
 #### Cadastro de bolões
 Endpoint para cadastrar um bolão, é nessário fornecer um `title` não podendo ser nulo ou sem valor no corpo da requisição. 
