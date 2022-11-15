@@ -160,7 +160,7 @@ exemplo do body que deve ser passado para esta requisição:
 
 **OBS:** Esta rota requer autenticação sendo necessário passar o token obtido pós login no header da requisição como Bearer token no **Authorization**. 
 
-Método **POST** localhost:3333/pools/:poolId/games/:gameId/guesses
+Método **POST** /pools/:poolId/games/:gameId/guesses
 
 ```typescript
 {
